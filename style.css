@@ -86,3 +86,42 @@ html, body {
         transform: rotate(.5turn);
     }
 }
+
+
+/* svg */
+.svg .pie {
+    transform: rotate(-.25turn);
+}
+.svg .pie circle {
+    stroke: gold;
+    stroke-width: 32;
+    /* 25% radius * 64 size * 2 * pi */
+    stroke-dasharray: 0 100;
+    fill: none;
+}
+
+.svg .pie.animated circle {
+    animation: svg-color 5s linear;
+}
+
+@keyframes svg-color {
+    to {
+        stroke-dasharray: 100 100;
+    }
+}
+
+/* svg multiple */
+.svg-multiple .pie {
+    transform: rotate(-.25turn);
+}
+.svg-multiple .pie circle {
+    stroke-width: 32;
+    fill: none;
+}
+
+/* conic */
+.conic .pie {
+    background-image: conic-gradient(gold 30%, #f06 0);
+    /* multiple segments */
+    /*background-image: conic-gradient(gold 30%, #f06 0 60%, yellowgreen 0);*/
+}
