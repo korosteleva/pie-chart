@@ -1,0 +1,88 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.pie {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: #f06;
+}
+
+/* Skew */
+.skew-transform .pie {
+    overflow: hidden;
+}
+.skew-transform .pie::before {
+    content: '';
+    background: gold;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    padding: 50%;
+    /*transform: skewY(30deg);*/
+    /*transform-origin: bottom left;*/
+}
+.skew-transform .pie.over-half {
+    background: gold;
+}
+.skew-transform .pie.over-half::before {
+    background: #f06;
+    transform: rotate(-90deg) skewX(30deg);
+}
+
+
+/* Rotations */
+.rotation-transform .pie {
+    /* trick with transparent background and color */
+    background: linear-gradient(to right, transparent 50%, currentColor 0) #f06;
+    color: gold;
+}
+.rotation-transform .pie::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    margin-left: 50%;
+    /* trick to make a semi circle */
+    border-radius: 0 100% 100% 0 / 50%;
+    /* trick to avoid duplication in bg colors */
+    background-color: inherit;
+    /* using turn units, .1 - 10% */
+    transform: rotate(.1turn);
+    transform-origin: left;
+}
+.rotation-transform .pie.over-half::before {
+    background: currentColor;
+}
+
+/* animation */
+.rotation-transform .pie.animated {
+    animation-delay: -40s;
+}
+.rotation-transform .pie.animated::before {
+    animation: spin 50s linear 2,
+        color 100s step-start;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+    animation-delay: inherit;
+}
+
+@keyframes color {
+    50% {
+        background-color: inherit;
+    }
+}
+@keyframes spin {
+    to {
+        transform: rotate(.5turn);
+    }
+}
