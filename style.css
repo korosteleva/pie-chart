@@ -65,15 +65,10 @@ html, body {
 }
 
 /* animation */
-.rotation-transform .pie.animated {
-    animation-delay: -40s;
-}
 .rotation-transform .pie.animated::before {
-    animation: spin 50s linear 2,
-        color 100s step-start;
+    transform: rotate(.1turn);
+    animation: color 2s step-start infinite, spin 1s linear infinite;
     animation-fill-mode: forwards;
-    animation-play-state: paused;
-    animation-delay: inherit;
 }
 
 @keyframes color {
